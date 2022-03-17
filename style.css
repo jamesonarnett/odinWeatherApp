@@ -1,0 +1,29 @@
+body {
+  background: url("./assets/background.png") no-repeat center center fixed;
+  background-size: cover;
+}
+
+.weatherCardWhole {
+  display: flex;
+}
+
+.weatherCardL {
+  margin: 3rem;
+  color: white;
+  max-width: fit-content;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.weatherCardR {
+  margin: 3rem;
+  color: white;
+  margin-left: auto;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.weatherIcon {
+  width: 10rem;
+  height: 8rem;
+}
