@@ -53,10 +53,18 @@ const rainCheck = (item) => {
   }
 };
 
+const loadingIcon = () => {
+  const loader = document.querySelector(".loading");
+  loader.classList.add("display");
+
+  setTimeout(() => {
+    loader.classList.remove("display");
+  }, 1000);
+};
+
 //end utility functions
 
 //Controller-esque form
-
 const searchForm = document
   .getElementById("form")
   .addEventListener("submit", (e) => {
@@ -70,13 +78,14 @@ const searchForm = document
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const getWeatherCity = () => {
+  loadingIcon();
+
   const queryName = cityInput.value;
   fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${queryName}&appid=${"59fd5a052fb83eda97d09b3f2f02dde7"}`
   )
     .then((data) => data.json())
     .then((weather) => {
-      console.log(weather);
       createWeatherCard(weather);
       getWeatherWeekForecast(weather.coord.lat, weather.coord.lon);
     })
@@ -87,7 +96,7 @@ const getWeatherCity = () => {
 };
 
 const getWeatherWeekForecast = (lat, lon) => {
-  console.log(lat, lon);
+  loadingIcon();
   fetch(
     `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly&appid=${"59fd5a052fb83eda97d09b3f2f02dde7"}`
   )
@@ -105,6 +114,7 @@ const getWeatherWeekForecast = (lat, lon) => {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const getWeatherGeo = (lat, lon) => {
+  loadingIcon();
   fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${"59fd5a052fb83eda97d09b3f2f02dde7"}`
   )
@@ -167,7 +177,6 @@ const createWeatherWeekCard = (weather) => {
   let weekCard = document.getElementById("weekCard");
 
   weather.forEach((item) => {
-    console.log(item);
     const html = `
     <div class="dayCard">
     <h2>${unixTimeConverter(item.dt)}</h2>
@@ -184,7 +193,6 @@ const createWeatherWeekCard = (weather) => {
   });
 };
 
-// Make a loading screen/animation?
 // mobile first
 // rainy animations/more background changes
 // form validation... even needed?

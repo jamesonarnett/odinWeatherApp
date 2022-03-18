@@ -11,6 +11,26 @@ body {
   min-height: 99vh;
 }
 
+/* SmallScreen */
+@media only screen and (max-width: 600px) {
+  .weatherCardWhole {
+    flex-direction: column;
+  }
+
+  .weatherCardR {
+    margin-left: 3rem !important;
+  }
+}
+
+/* BigScreen */
+@media only screen and (min-width: 600px) {
+  .weatherCardL,
+  .weatherCardR,
+  .dayCard {
+    width: 250px;
+  }
+}
+
 .header {
   text-align: center;
 }
@@ -19,8 +39,8 @@ body {
   padding: 0.3rem 0.5rem;
   margin: 0.3rem;
   font-size: 16px;
+  border: 1px solid black;
 }
-
 .hidden {
   visibility: hidden;
 }
@@ -29,20 +49,15 @@ body {
   color: red;
 }
 
-.weatherCardWhole {
-  display: flex;
-}
-
 .weatherCardL,
 .weatherCardR,
 .dayCard {
-  margin: 3rem;
+  margin: 0 3rem 3rem 3rem;
   color: white;
   background-color: black;
   padding: 1rem;
   border-radius: 10px;
   opacity: 87%;
-  width: 250px;
   text-align: center;
 }
 
@@ -53,6 +68,10 @@ body {
 .weatherIcon {
   width: 10rem;
   height: 8rem;
+}
+
+.weatherCardWhole {
+  display: flex;
 }
 
 .meWrapper {
@@ -84,17 +103,6 @@ body {
   font-size: 12px;
   margin-top: -1rem;
 }
-
-/* .footer {
-  position: absolute;
-  height: 9vh;
-  width: 100%;
-  bottom: 0;
-  left: 0;
-  margin: 0 -1rem -1rem -1rem;
-  padding-right: 2rem;
-  background-color: black;
-} */
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 BUTTONS */
@@ -169,7 +177,7 @@ BUTTONS */
   color: #ffffff;
 }
 
-/* MYBUTTON MYBUTTON */
+/* MYBUTTON MYBUTTON MYBUTTON MYBUTTON MYBUTTON MYBUTTON MYBUTTON MYBUTTON MYBUTTON MYBUTTON MYBUTTON MYBUTTON MYBUTTON MYBUTTON*/
 
 .searchBtn {
   padding: 15px 25px;
@@ -209,4 +217,28 @@ BUTTONS */
 
 .searchBtn:hover::before {
   width: 100%;
+}
+
+/* LoaderIcon LoaderIcon LoaderIcon LoaderIcon LoaderIcon LoaderIcon LoaderIcon LoaderIcon LoaderIcon */
+
+.loading {
+  width: 2rem;
+  height: 2rem;
+  border: 5px solid #f3f3f3;
+  border-top: 6px solid #0051ff;
+  border-radius: 100%;
+  margin: auto;
+  visibility: hidden;
+  animation: spin 1s infinite linear;
+}
+.loading.display {
+  visibility: visible;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
