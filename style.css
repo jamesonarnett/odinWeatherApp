@@ -17,12 +17,21 @@ body {
   font-size: 16px;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
+.red {
+  color: red;
+}
+
 .weatherCardWhole {
   display: flex;
 }
 
 .weatherCardL,
-.weatherCardR {
+.weatherCardR,
+.dayCard {
   margin: 3rem;
   color: white;
   background-color: black;
@@ -46,6 +55,31 @@ body {
   display: flex;
   justify-content: flex-end;
   margin-top: -4rem;
+}
+
+.weekCardWhole {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.dayCard {
+  display: flex;
+  flex-direction: column;
+  width: 175px;
+  height: fit-content;
+  padding: 1rem;
+  margin: 0.3rem 0.5rem;
+}
+
+.weekHigh {
+  font-size: 18px;
+}
+
+.weekLow {
+  font-size: 12px;
+  margin-top: -1rem;
 }
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
