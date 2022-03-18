@@ -13,7 +13,9 @@ const addErrorMsg = () => {
 
 const deleteBody = () => {
   let body = document.getElementById("bodyCard");
+  let weekCard = document.getElementById("weekCard");
   body.textContent = "";
+  weekCard.textContent = "";
 };
 
 const kelvinToF = (k) => {
@@ -43,7 +45,18 @@ const unixTimeConverter = (date) => {
   return `${day} <br /> ${dateMonth}-${dateNum}`;
 };
 
+const rainCheck = (item) => {
+  if (item.rain > 0) {
+    return `${(item.rain * 0.0393701).toFixed(2)} inches`;
+  } else {
+    return `0% Chance`;
+  }
+};
+
+//end utility functions
+
 //Controller-esque form
+
 const searchForm = document
   .getElementById("form")
   .addEventListener("submit", (e) => {
@@ -114,7 +127,7 @@ navigator.geolocation.getCurrentPosition((position) => {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const createWeatherCard = (weather) => {
-  let body = document.getElementById("body");
+  let bodyCard = document.getElementById("bodyCard");
 
   let temp = kelvinToF(weather.main.temp);
   if (temp >= 70) {
@@ -124,35 +137,30 @@ const createWeatherCard = (weather) => {
   }
 
   const html = `
-  <div id="bodyCard" class="weatherCardWhole">
+
         <div class="weatherCardL">
-        <img class="weatherIcon" src="http://openweathermap.org/img/wn/${
-          weather.weather[0].icon
-        }@2x.png" />
-            <h4>${weather.name}</h4>
-            <p>${new Date().toLocaleDateString()}</p>
-            <h1>${temp}F</h1>
-            <h3>${weather.weather[0].description}</h3>
+          <img class="weatherIcon" src="http://openweathermap.org/img/wn/${
+            weather.weather[0].icon
+          }@2x.png" />
+              <h4>${weather.name}</h4>
+              <p>${new Date().toLocaleDateString()}</p>
+              <h1>${temp}F</h1>
+              <h3>${weather.weather[0].description}</h3>
             
         </div>
         <div class="weatherCardR">
-        <p>Cloud Coverage: ${weather.clouds.all}%</p>
-        <p>Humidity: ${weather.main.humidity}%</p>
-        <p>Wind: ${weather.wind.speed}mph</p>
-        
+          <p>Cloud Coverage: ${weather.clouds.all}%</p>
+          <p>Humidity: ${weather.main.humidity}%</p>
+          <p>Wind: ${weather.wind.speed}mph</p>
+          <p class="weekRain">Precipitation: <br />${rainCheck(weather)}</p>
+          <img class="weatherIcon" src="http://openweathermap.org/img/wn/${
+            weather.weather[0].icon
+          }@2x.png" />
         </div>
-    </div> 
+    
     `;
 
-  body.insertAdjacentHTML("beforeend", html);
-};
-
-const rainCheck = (item) => {
-  if (item.rain > 0) {
-    return `${(item.rain * 0.0393701).toFixed(2)} inches`;
-  } else {
-    return `0% Chance`;
-  }
+  bodyCard.insertAdjacentHTML("beforeend", html);
 };
 
 const createWeatherWeekCard = (weather) => {
@@ -177,7 +185,6 @@ const createWeatherWeekCard = (weather) => {
 };
 
 // Make a loading screen/animation?
-// Add seven day foreecast cards to bottom
 // mobile first
 // rainy animations/more background changes
 // form validation... even needed?
