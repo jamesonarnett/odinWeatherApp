@@ -1,4 +1,5 @@
-import { kelvinToF, unixTimeConverter, rainCheck } from "./utils";
+import { kelvinToF, unixTimeConverter } from "./utils";
+import { rainCheck } from "./rain";
 
 const createWeatherCard = (weather) => {
   let bodyCard = document.getElementById("bodyCard");

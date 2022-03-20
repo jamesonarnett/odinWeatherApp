@@ -1,5 +1,3 @@
-import createRain from "./rain";
-
 const removeErrorMsg = () => {
   errorMsg.classList.add("hidden");
 };
@@ -41,13 +39,6 @@ const unixTimeConverter = (date) => {
   return `${day} <br /> ${dateMonth}-${dateNum}`;
 };
 
-const rainCheck = (item) => {
-  if (item.rain > 0) {
-    return `${(item.rain * 0.0393701).toFixed(2)} inches`;
-  } else {
-    return `0% Chance`;
-  }
-};
 const loadingIcon = () => {
   const loader = document.querySelector(".loading");
   loader.classList.add("display");
@@ -59,7 +50,6 @@ const loadingIcon = () => {
 
 export {
   loadingIcon,
-  rainCheck,
   unixTimeConverter,
   kelvinToF,
   deleteBody,

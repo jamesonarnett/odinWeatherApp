@@ -4,12 +4,14 @@
   "description": "Weather app for Odin Project",
   "main": "index.js",
   "scripts": {
-    "start": "webpack --watch"
+    "start": "webpack build",
+    "dev": "webpack --watch"
   },
   "author": "JamesonA",
   "license": "ISC",
   "devDependencies": {
     "css-loader": "^6.7.1",
+    "path": "^0.12.7",
     "sass": "^1.49.9",
     "sass-loader": "^12.6.0",
     "style-loader": "^3.3.1",

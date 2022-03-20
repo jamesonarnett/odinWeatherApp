@@ -20,19 +20,32 @@ const createRain = () => {
 };
 
 const stopRain = () => {
+  let body = document.getElementById("body");
   rain.innerHTML = "";
+  body.style.backgroundImage = `url("")`;
 };
 
-// const isRaining = (precipitation = 0, snow = 0) => {
-//   if (precipitation > 0 || snow > 0) {
-//     createRain();
-//   }
-// };
+const rainCheck = (item) => {
+  if (item.rain > 0) {
+    return `${(item.rain * 0.0393701).toFixed(2)} inches`;
+  } else {
+    return `0% Chance`;
+  }
+};
+
+const isRaining = (weather) => {
+  let body = document.getElementById("body");
+
+  if (weather.rain || weather.snow) {
+    body.style.backgroundImage = `url("./assets/rain.jpg")`;
+    createRain();
+  }
+};
 
 //rain drop
 //drop top
 //hit me with your car on the crosswalk
 
-export { createRain, stopRain };
+export { createRain, stopRain, isRaining, rainCheck };
 
 //should make snow animation different.....

@@ -11,7 +11,7 @@ import {
   deleteBody,
 } from "./modules/utils";
 
-import { createRain, stopRain } from "./modules/rain";
+import { stopRain, isRaining } from "./modules/rain";
 
 //Controller-esque form
 const searchForm = document
@@ -38,12 +38,9 @@ const getWeatherCity = () => {
   )
     .then((data) => data.json())
     .then((weather) => {
-      if (weather.rain || weather.snow) {
-        createRain();
-      }
-
       createWeatherCard(weather);
       getWeatherWeekForecast(weather.coord.lat, weather.coord.lon);
+      isRaining(weather);
     })
     .catch(() => {
       addErrorMsg();
@@ -92,6 +89,5 @@ navigator.geolocation.getCurrentPosition((position) => {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // mobile first
-// rainy animations/more background changes
 // form validation... even needed?
 // refactor
