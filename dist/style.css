@@ -1,0 +1,244 @@
+html {
+  font-family: "Merriweather", serif;
+  overflow-x: hidden;
+  margin: 0;
+}
+
+body {
+  background: url("./assets/background.png") no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
+  min-height: 99vh;
+}
+
+/* SmallScreen */
+@media only screen and (max-width: 600px) {
+  .weatherCardWhole {
+    flex-direction: column;
+  }
+
+  .weatherCardR {
+    margin-left: 3rem !important;
+  }
+}
+
+/* BigScreen */
+@media only screen and (min-width: 600px) {
+  .weatherCardL,
+  .weatherCardR,
+  .dayCard {
+    width: 250px;
+  }
+}
+
+.header {
+  text-align: center;
+}
+
+.input {
+  padding: 0.3rem 0.5rem;
+  margin: 0.3rem;
+  font-size: 16px;
+  border: 1px solid black;
+}
+.hidden {
+  visibility: hidden;
+}
+
+.red {
+  color: red;
+}
+
+.weatherCardL,
+.weatherCardR,
+.dayCard {
+  margin: 0 3rem 3rem 3rem;
+  color: white;
+  background-color: black;
+  padding: 1rem;
+  border-radius: 10px;
+  opacity: 87%;
+  text-align: center;
+}
+
+.weatherCardR {
+  margin-left: auto;
+}
+
+.weatherIcon {
+  width: 10rem;
+  height: 8rem;
+}
+
+.weatherCardWhole {
+  display: flex;
+}
+
+.meWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.weekCardWhole {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.dayCard {
+  display: flex;
+  flex-direction: column;
+  width: 175px;
+  height: fit-content;
+  padding: 1rem;
+  margin: 0.3rem 0.5rem;
+}
+
+.weekHigh {
+  font-size: 18px;
+}
+
+.weekLow {
+  font-size: 12px;
+  margin-top: -1rem;
+}
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+BUTTONS */
+
+.wrapper .icon {
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 50%;
+  padding: 15px;
+  margin: 10px;
+  width: 30px;
+  height: 30px;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapper .tooltip {
+  position: absolute;
+  top: 0;
+  font-size: 14px;
+  background-color: #ffffff;
+  color: #ffffff;
+  padding: 5px 8px;
+  border-radius: 5px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapper .tooltip::before {
+  position: absolute;
+  content: "";
+  height: 8px;
+  width: 8px;
+  background-color: #ffffff;
+  bottom: -3px;
+  left: 50%;
+  transform: translate(-50%) rotate(45deg);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapper .icon:hover .tooltip {
+  top: -45px;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.wrapper .icon:hover span,
+.wrapper .icon:hover .tooltip {
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+}
+
+.wrapper .twitter:hover,
+.wrapper .twitter:hover .tooltip,
+.wrapper .twitter:hover .tooltip::before {
+  background-color: #46c1f6;
+  color: #ffffff;
+}
+
+.wrapper .github:hover,
+.wrapper .github:hover .tooltip,
+.wrapper .github:hover .tooltip::before {
+  background-color: #333333;
+  color: #ffffff;
+}
+
+/* MYBUTTON MYBUTTON MYBUTTON MYBUTTON MYBUTTON MYBUTTON MYBUTTON MYBUTTON MYBUTTON MYBUTTON MYBUTTON MYBUTTON MYBUTTON MYBUTTON*/
+
+.searchBtn {
+  padding: 15px 25px;
+  border: unset;
+  border-radius: 15px;
+  color: #212121;
+  z-index: 1;
+  background: #e8e8e8;
+  position: relative;
+  font-weight: 1000;
+  font-size: 17px;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  transition: all 250ms;
+  overflow: hidden;
+}
+
+.searchBtn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 15px;
+  background-color: #212121;
+  z-index: -1;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  transition: all 250ms;
+}
+
+.searchBtn:hover {
+  color: #e8e8e8;
+  cursor: pointer;
+}
+
+.searchBtn:hover::before {
+  width: 100%;
+}
+
+/* LoaderIcon LoaderIcon LoaderIcon LoaderIcon LoaderIcon LoaderIcon LoaderIcon LoaderIcon LoaderIcon */
+
+.loading {
+  width: 2rem;
+  height: 2rem;
+  border: 5px solid #f3f3f3;
+  border-top: 6px solid #0051ff;
+  border-radius: 100%;
+  margin: auto;
+  visibility: hidden;
+  animation: spin 1s infinite linear;
+}
+.loading.display {
+  visibility: visible;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
