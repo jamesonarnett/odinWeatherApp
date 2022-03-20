@@ -1,10 +1,10 @@
 const rain = document.querySelector(".rain");
 
-function randRange(maxNum, minNum) {
+const randRange = (maxNum, minNum) => {
   return Math.floor(Math.random(10) * (maxNum - minNum + 1)) + minNum;
-}
+};
 
-function createRain() {
+const createRain = () => {
   const numberOfDrops = 800;
   for (let i = 0; i < numberOfDrops; i++) {
     const dropLeft = randRange(0, 3000);
@@ -16,14 +16,23 @@ function createRain() {
     let drop = document.querySelector(".drop");
     drop.style.left = `${dropLeft}px`;
     drop.style.top = `${dropTop}px`;
-
-    console.log(drop.style.left);
-    console.log(dropLeft);
   }
-}
+};
+
+const stopRain = () => {
+  rain.innerHTML = "";
+};
+
+// const isRaining = (precipitation = 0, snow = 0) => {
+//   if (precipitation > 0 || snow > 0) {
+//     createRain();
+//   }
+// };
 
 //rain drop
 //drop top
 //hit me with your car on the crosswalk
 
-export default createRain;
+export { createRain, stopRain };
+
+//should make snow animation different.....

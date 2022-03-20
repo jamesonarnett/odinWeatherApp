@@ -1,3 +1,5 @@
+import createRain from "./rain";
+
 const removeErrorMsg = () => {
   errorMsg.classList.add("hidden");
 };
