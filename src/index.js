@@ -1,73 +1,20 @@
-//Globals
-const cityInput = document.getElementById("cityInput");
-const errorMsg = document.getElementById("errorMsg");
-
-//utility functions
-const removeErrorMsg = () => {
-  errorMsg.classList.add("hidden");
-};
-
-const addErrorMsg = () => {
-  errorMsg.classList.remove("hidden");
-};
-
-const deleteBody = () => {
-  let body = document.getElementById("bodyCard");
-  let weekCard = document.getElementById("weekCard");
-  body.textContent = "";
-  weekCard.textContent = "";
-};
-
-const kelvinToF = (k) => {
-  return (((k - 273.15) * 9) / 5 + 32).toFixed(1);
-};
-
-const unixTimeConverter = (date) => {
-  let a = new Date(date * 1000);
-  let months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-  let dateMonth = months[a.getMonth()];
-  let dateNum = a.getDate();
-  let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
-  let day = days[a.getDay()];
-  return `${day} <br /> ${dateMonth}-${dateNum}`;
-};
-
-const rainCheck = (item) => {
-  if (item.rain > 0) {
-    return `${(item.rain * 0.0393701).toFixed(2)} inches`;
-  } else {
-    return `0% Chance`;
-  }
-};
-
-const loadingIcon = () => {
-  const loader = document.querySelector(".loading");
-  loader.classList.add("display");
-
-  setTimeout(() => {
-    loader.classList.remove("display");
-  }, 1000);
-};
-
-//end utility functions
+import "./scss/rain.scss";
+import {
+  loadingIcon,
+  removeErrorMsg,
+  addErrorMsg,
+  kelvinToF,
+  unixTimeConverter,
+  rainCheck,
+  deleteBody,
+} from "./modules/utils";
+import createRain from "./modules/rain";
 
 //Controller-esque form
 const searchForm = document
   .getElementById("form")
   .addEventListener("submit", (e) => {
+    const cityInput = document.getElementById("cityInput");
     e.preventDefault();
     removeErrorMsg();
     deleteBody();
@@ -78,6 +25,7 @@ const searchForm = document
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const getWeatherCity = () => {
+  const cityInput = document.getElementById("cityInput");
   loadingIcon();
 
   const queryName = cityInput.value;
@@ -121,6 +69,7 @@ const getWeatherGeo = (lat, lon) => {
     .then((data) => data.json())
     .then((weather) => {
       createWeatherCard(weather);
+      createRain();
     })
     .catch((err) => {
       console.log(err);
@@ -197,4 +146,3 @@ const createWeatherWeekCard = (weather) => {
 // rainy animations/more background changes
 // form validation... even needed?
 // refactor
-// webpack???

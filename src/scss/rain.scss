@@ -1,0 +1,19 @@
+.drop {
+  background: #ffffff;
+  width: 1px;
+  height: 69px;
+  position: absolute;
+  bottom: 100px;
+  animation: fall 0.63s linear infinite;
+  -moz-animation: fall 0.63s linear infinite;
+}
+@keyframes fall {
+  to {
+    margin-top: 1000px;
+  }
+}
+@-moz-keyframes fall {
+  to {
+    margin-top: 1000px;
+  }
+}
