@@ -1,4 +1,4 @@
-import "./scss/rain.scss";
+import "./scss/precipitation.scss";
 import {
   createWeatherCard,
   createWeatherWeekCard,
@@ -12,6 +12,7 @@ import {
 } from "./modules/utils";
 
 import { stopRain, isRaining } from "./modules/rain";
+import { stopSnow, isSnowing, createSnow } from "./modules/snow";
 
 //Controller-esque form
 const searchForm = document
@@ -22,6 +23,7 @@ const searchForm = document
     removeErrorMsg();
     deleteBody();
     stopRain();
+    stopSnow();
     getWeatherCity();
     cityInput.value = "";
   });
@@ -57,6 +59,7 @@ const getWeatherWeekForecast = (lat, lon) => {
     .then((weather) => {
       let days = weather.daily;
       createWeatherWeekCard(days);
+      isSnowing(weather);
     })
     .catch((err) => {
       console.log(err);

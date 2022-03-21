@@ -1,0 +1,40 @@
+.snowflake {
+  background: #ffffff;
+  width: 5px;
+  height: 10px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 100px;
+  animation: snowfall 1.63s linear infinite;
+  -moz-animation: snowfall 1.63s linear infinite;
+}
+@keyframes snowfall {
+  to {
+    margin-top: 1000px;
+  }
+}
+@-moz-keyframes snowfall {
+  to {
+    margin-top: 1000px;
+  }
+}
+
+.drop {
+  background: #ffffff;
+  width: 1px;
+  height: 69px;
+  position: absolute;
+  bottom: 100px;
+  animation: rainfall 0.63s linear infinite;
+  -moz-animation: rainfall 0.63s linear infinite;
+}
+@keyframes rainfall {
+  to {
+    margin-top: 1000px;
+  }
+}
+@-moz-keyframes rainfall {
+  to {
+    margin-top: 1000px;
+  }
+}

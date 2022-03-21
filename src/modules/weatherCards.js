@@ -26,8 +26,7 @@ const createWeatherCard = (weather) => {
           <div class="weatherCardR">
             <p>Cloud Coverage: ${weather.clouds.all}%</p>
             <p>Humidity: ${weather.main.humidity}%</p>
-            <p>Wind: ${weather.wind.speed}mph</p>
-            <p class="weekRain">Precipitation: <br />${rainCheck(weather)}</p>
+            <p>Wind: ${weather.wind.speed}mph</p>           
             <img class="weatherIcon" src="http://openweathermap.org/img/wn/${
               weather.weather[0].icon
             }@2x.png" />

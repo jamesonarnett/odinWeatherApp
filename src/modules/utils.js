@@ -16,6 +16,10 @@ const kelvinToF = (k) => {
   return (((k - 273.15) * 9) / 5 + 32).toFixed(1);
 };
 
+const randRange = (maxNum, minNum) => {
+  return Math.floor(Math.random(10) * (maxNum - minNum + 1)) + minNum;
+};
+
 const unixTimeConverter = (date) => {
   let a = new Date(date * 1000);
   let months = [
@@ -55,4 +59,5 @@ export {
   deleteBody,
   addErrorMsg,
   removeErrorMsg,
+  randRange,
 };
