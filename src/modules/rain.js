@@ -34,7 +34,7 @@ const rainCheck = (item) => {
 const isRaining = (weather) => {
   let body = document.getElementById("body");
 
-  if (weather.rain) {
+  if (weather.daily[0].rain > 0) {
     body.style.backgroundImage = `url("./assets/rain.jpg")`;
     createRain();
   }

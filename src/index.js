@@ -11,7 +11,7 @@ import {
   deleteBody,
 } from "./modules/utils";
 
-import { stopRain, isRaining } from "./modules/rain";
+import { stopRain, isRaining, createRain } from "./modules/rain";
 import { stopSnow, isSnowing, createSnow } from "./modules/snow";
 
 //Controller-esque form
@@ -42,7 +42,6 @@ const getWeatherCity = () => {
     .then((weather) => {
       createWeatherCard(weather);
       getWeatherWeekForecast(weather.coord.lat, weather.coord.lon);
-      isRaining(weather);
     })
     .catch(() => {
       addErrorMsg();
@@ -60,6 +59,7 @@ const getWeatherWeekForecast = (lat, lon) => {
       let days = weather.daily;
       createWeatherWeekCard(days);
       isSnowing(weather);
+      isRaining(weather);
     })
     .catch((err) => {
       console.log(err);
